@@ -42,13 +42,31 @@ function timer() {
 
 setTimeout(displaySwitch, 6000);
 
+const form = document.getElementById("answers-form");
+const message = document.getElementById("instructions");
+
 function displaySwitch() {
   casualNumbersList.classList.remove("d-flex");
   casualNumbersList.classList.add("d-none");
-  const form = document.getElementById("answers-form");
   console.log(form);
   form.classList.remove("d-none");
+  message.innerText = "Inserisci i numeri nelle caselle!";
 }
 
 // - Dopo che sono stati inseriti i 5 numeri, il software dice quanti
 //   e quali dei numeri da indovinare sono stati individuati.
+
+const userNumbersForm = document.getElementById("input-group");
+console.log("input-group", userNumbersForm);
+
+const userNumbers = document.querySelectorAll(".form-control");
+console.log("userNumbers", userNumbers);
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const userNumbersList = [];
+  for (let i = 0; i < userNumbers.length; i++) {
+    userNumbersList.push(parseInt(userNumbers[i].value));
+  }
+  console.log("Numeri utente:", userNumbersList);
+});
