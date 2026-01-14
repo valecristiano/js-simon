@@ -7,7 +7,13 @@ function generateCasualNumber(min, max) {
   return number;
 }
 
-let casualNumbers = generateCasualNumber(1, 50);
+let casualNumbers = [];
+
+for (let i = 0; i < 5; i++) {
+  const casulNumberCycle = generateCasualNumber(1, 50);
+  casualNumbers.push(casulNumberCycle);
+}
+
 console.log(casualNumbers);
 
 casualNumbersList.innerText = casualNumbers;
