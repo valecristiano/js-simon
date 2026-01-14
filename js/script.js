@@ -24,23 +24,28 @@ console.log(countdown);
 
 countdownId = setInterval(timer, 1000);
 
-let timeToMemorize = 5;
+let timeToMemorize = 6;
 
 function timer() {
   timeToMemorize--;
   console.log("timeToMemorize", timeToMemorize);
   if (timeToMemorize <= 0) {
     clearInterval(countdownId);
-  }
-  countdown.innerText = timeToMemorize;
-  if (timeToMemorize === 0) {
     countdown.style.display = "none";
   }
+  countdown.innerText = timeToMemorize;
 }
 
 // - Dopo 30 secondi i numeri scompaiono
 
+setTimeout(function () {
+  casualNumbersList.style.display = "none";
+}, 6000);
+
 // - Appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente,
 //   nell'ordine che preferisce.
+const form = document.getElementById("answers-form");
+console.log(form);
+
 // - Dopo che sono stati inseriti i 5 numeri, il software dice quanti
 //   e quali dei numeri da indovinare sono stati individuati.
