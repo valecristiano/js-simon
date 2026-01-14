@@ -74,5 +74,5 @@ form.addEventListener("submit", function (e) {
   const matchingNumbers = userNumbersList.filter((currentNum) => casualNumbers.includes(currentNum));
 
   const outputMessage = document.getElementById("message");
-  outputMessage.innerText = ` Hai indovinato ${matchingNumbers.length} numeri: ${matchingNumbers.join(" ")}`;
+  outputMessage.innerText = ` Hai indovinato ${matchingNumbers.length} numeri: ${matchingNumbers.join(", ")}`;
 });
