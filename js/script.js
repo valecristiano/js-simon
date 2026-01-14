@@ -16,9 +16,24 @@ for (let i = 0; i < 5; i++) {
 
 console.log(casualNumbers);
 
-casualNumbersList.innerText = casualNumbers;
+casualNumbersList.innerText = casualNumbers.join(" ");
 
 // - Da lì parte un timer di 30 secondi.
+const countdown = document.getElementById("countdown");
+console.log(countdown);
+
+countdownId = setInterval(timer, 1000);
+let timeToMemorize = 5;
+
+function timer() {
+  timeToMemorize--;
+  console.log("timeToMemorize", timeToMemorize);
+  if (timeToMemorize <= 0) {
+    clearInterval(countdownId);
+  }
+  countdown.innerText = timeToMemorize;
+}
+
 // - Dopo 30 secondi i numeri scompaiono
 // - Appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente,
 //   nell'ordine che preferisce.
