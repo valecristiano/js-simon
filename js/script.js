@@ -19,6 +19,7 @@ console.log(casualNumbers);
 casualNumbersList.innerText = casualNumbers.join(" ");
 
 // - Da lì parte un timer di 30 secondi.
+// - Dopo 30 secondi i numeri scompaiono e appaiono 5 input
 const countdown = document.getElementById("countdown");
 console.log(countdown);
 
@@ -32,15 +33,13 @@ function timer() {
   if (timeToMemorize <= 0) {
     clearInterval(countdownId);
     countdown.style.display = "none";
+    displaySwitch();
   }
   countdown.innerText = timeToMemorize;
 }
 
-// - Dopo 30 secondi i numeri scompaiono
-// - Appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente,
+// - Nei 5 input l'utente deve inserire i numeri che ha visto precedentemente,
 //   nell'ordine che preferisce.
-
-setTimeout(displaySwitch, 6000);
 
 const form = document.getElementById("answers-form");
 const message = document.getElementById("instructions");
@@ -50,7 +49,7 @@ function displaySwitch() {
   casualNumbersList.classList.add("d-none");
   console.log(form);
   form.classList.remove("d-none");
-  message.innerText = "Inserisci i numeri nelle caselle!";
+  message.innerText = "Inserisci i numeri che ricordi (l'ordine non è importante)";
 }
 
 // - Dopo che sono stati inseriti i 5 numeri, il software dice quanti
@@ -66,7 +65,14 @@ form.addEventListener("submit", function (e) {
   e.preventDefault();
   const userNumbersList = [];
   for (let i = 0; i < userNumbers.length; i++) {
-    userNumbersList.push(parseInt(userNumbers[i].value));
+    const currentNumber = userNumbers[i];
+    userNumbersList.push(parseInt(currentNumber.value));
+    console.log("Valore", currentNumber.value);
   }
   console.log("Numeri utente:", userNumbersList);
+
+  const matchingNumbers = userNumbersList.filter((currentNum) => casualNumbers.includes(currentNum));
+
+  const outputMessage = document.getElementById("message");
+  outputMessage.innerText = ` Hai indovinato ${matchingNumbers.length} numeri: ${matchingNumbers.join(" ")}`;
 });
