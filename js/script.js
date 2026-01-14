@@ -23,6 +23,7 @@ const countdown = document.getElementById("countdown");
 console.log(countdown);
 
 countdownId = setInterval(timer, 1000);
+
 let timeToMemorize = 5;
 
 function timer() {
@@ -32,9 +33,13 @@ function timer() {
     clearInterval(countdownId);
   }
   countdown.innerText = timeToMemorize;
+  if (timeToMemorize === 0) {
+    countdown.style.display = "none";
+  }
 }
 
 // - Dopo 30 secondi i numeri scompaiono
+
 // - Appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente,
 //   nell'ordine che preferisce.
 // - Dopo che sono stati inseriti i 5 numeri, il software dice quanti
